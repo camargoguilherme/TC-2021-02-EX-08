@@ -21,6 +21,7 @@ const contentOfID = contentOfTag(R.__, 'id');
 const getGitHubProject = xmlNode => contentOfSource(xmlNode).replace('https://github.com/', '');
 
 // (Exercício 1) - Declaração de função
+// (Exercício 2) - Função com side-effects, porque retorna um array com referencia aos itens da variavel nodes
 const elementsToArray = nodes => {
     const arr = [];
     for (let i = 0; i < nodes.length; i++)
