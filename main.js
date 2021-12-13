@@ -7,6 +7,7 @@ const { isValid, elementsToArray, getGitHubProject } = require('./xmlfilter');
 // efetua o processamento do xml e armazena a estrutura no objeto 'document'
 const document = new DOMParser().parseFromString(fs.readFileSync('res/f-droid.xml', 'utf-8'));
 
+// (Exercício 1) - Declaração de função
 const isAddedAfter2018AndUpdatedAfter2019 = isValid(R.__, 2018, 2019);
 
 const addedApps = elementsToArray(document.getElementsByTagName('application'))
