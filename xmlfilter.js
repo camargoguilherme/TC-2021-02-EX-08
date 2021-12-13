@@ -22,6 +22,8 @@ const contentOfID = contentOfTag(R.__, 'id');
 // (Exercício 1) - Declaração de função
 const getGitHubProject = xmlNode => contentOfSource(xmlNode).replace('https://github.com/', '');
 
+const getGitHubProjectInfos = xmlNode => (`GitHub: ${contentOfSource(xmlNode).replace('https://github.com/', '')} - Added: ${contentOfAdded(xmlNode)} - Updated: ${contentOfUpdated(xmlNode)}`);
+
 // (Exercício 1) - Declaração de função
 // (Exercício 2) - Função com side-effects, porque retorna um array com referencia aos itens da variavel nodes
 const elementsToArray = nodes => {
@@ -51,10 +53,29 @@ const isValid = R.curry(
     }
 );
 
+const isValid2 = R.curry(
+    (app, addedAfterYear, updatedAfterYear) => {
+        if (!contentOfSource(app).includes('github.com'))
+            return false;
+
+        const addedDate = new Date(contentOfAdded(app));
+        if (addedDate.getFullYear() < addedAfterYear)
+            return false;
+
+        const lastUpdatedDate = new Date(contentOfUpdated(app));
+        if (lastUpdatedDate.getFullYear() != updatedAfterYear)
+            return false;
+
+        return true;
+    }
+);
+
 module.exports = {
     isValid,
+    isValid2,
     elementsToArray,
     getGitHubProject,
+    getGitHubProjectInfos,
     contentOfSource,
     contentOfID
 };
