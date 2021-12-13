@@ -1,6 +1,7 @@
 const R = require('ramda');
 
 // (Exercício 1) - Declaração de função
+// (Exercício 3) - Função curry
 const contentOfTag = R.curry(
     (xmlNode, tagName) => xmlNode.getElementsByTagName(tagName)[0].textContent
 );
@@ -30,6 +31,7 @@ const elementsToArray = nodes => {
 };
 
 // (Exercício 1) - Declaração de função
+// (Exercício 3) - Função curry
 const isValid = R.curry(
     (app, addedAfterYear, updatedAfterYear) => {
         if (!contentOfSource(app).includes('github.com'))
